@@ -172,3 +172,4 @@ cython_debug/
 
 *initial.py
 *advertisement/migrations/
+*.jpg
