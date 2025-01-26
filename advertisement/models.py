@@ -27,6 +27,8 @@ class Advertisement(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     city = models.OneToOneField(City , on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     
     
     # def save(self, *args,**kwargs):
