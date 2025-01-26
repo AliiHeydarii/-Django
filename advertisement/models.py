@@ -20,12 +20,12 @@ class City(models.Model):
 
 class Advertisement(models.Model):
     slug = models.SlugField()
-    image = models.ImageField(upload_to='/ads')
+    image = models.ImageField(upload_to='ads')
     title = models.CharField(max_length=250)
     description = models.TextField()
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
-    city = models.OneToOneField(City)
+    city = models.OneToOneField(City , on_delete=models.CASCADE)
     
     
     def save(self, *args,**kwargs):

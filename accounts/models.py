@@ -50,4 +50,4 @@ class Profile(models.Model):
     user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     first_name = models.CharField(max_length=250 , blank=True)
     last_name = models.CharField(max_length=250 , null=True)
-    avatar = models.ImageField(upload_to='/avatar', blank=True , null=True)
+    avatar = models.ImageField(upload_to='avatar', blank=True , null=True)
