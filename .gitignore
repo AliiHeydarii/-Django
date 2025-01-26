@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 
 *initial.py
+*advertisement/migrations/

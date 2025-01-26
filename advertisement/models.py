@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser
-from django.template.defaultfilters import slugify
+from slugify import slugify
 # Create your models here.
 
 class Category(models.Model):
@@ -19,19 +19,20 @@ class City(models.Model):
 
 
 class Advertisement(models.Model):
-    slug = models.SlugField()
+    # slug = models.SlugField()
     image = models.ImageField(upload_to='ads')
     title = models.CharField(max_length=250)
+    price = models.DecimalField(max_digits=15 , decimal_places=3)
     description = models.TextField()
     user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     city = models.OneToOneField(City , on_delete=models.CASCADE)
     
     
-    def save(self, *args,**kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super().save(*args,**kwargs)
+    # def save(self, *args,**kwargs):
+    #     if not self.slug:
+    #         self.slug = slugify(self.title)
+    #     super().save(*args,**kwargs)
     
     
     def __str__(self):
