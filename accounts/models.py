@@ -27,7 +27,7 @@ class CustomUserManager(UserManager):
         if extra_fields.get("is_superuser") is not True:
             raise ValueError("Superuser must have is_superuser=True.")
 
-        return self.create_superuser(username, email,phone_number, password, **extra_fields)
+        return self.create_user(username, email,phone_number, password, **extra_fields)
 
 
 class CustomUser(AbstractBaseUser):
@@ -42,6 +42,13 @@ class CustomUser(AbstractBaseUser):
     REQUIRED_FIELDS = ['username' , 'phone_number']
     objects = CustomUserManager()
     
+    
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
+    
     def __str__(self):
         return self.username
     
@@ -51,3 +58,6 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=250 , blank=True)
     last_name = models.CharField(max_length=250 , null=True)
     avatar = models.ImageField(upload_to='avatar', blank=True , null=True)
+    
+    def __str__(self):
+        return self.user
