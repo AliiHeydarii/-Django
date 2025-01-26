@@ -24,18 +24,12 @@ class Advertisement(models.Model):
     title = models.CharField(max_length=250)
     price = models.DecimalField(max_digits=15 , decimal_places=3)
     description = models.TextField()
-    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE , blank=True , null=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
-    city = models.OneToOneField(City , on_delete=models.CASCADE)
+    city = models.ForeignKey(City , on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
-    
-    # def save(self, *args,**kwargs):
-    #     if not self.slug:
-    #         self.slug = slugify(self.title)
-    #     super().save(*args,**kwargs)
-    
-    
+   
     def __str__(self):
         return self.title

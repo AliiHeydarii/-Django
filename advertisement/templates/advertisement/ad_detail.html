@@ -24,7 +24,11 @@
           <p class="card-text"><small class="text-muted"> {{ad.created|timesince}} </small></p>
           <hr>
           <h5>اطلاعات تماس</h5>
+          {% if user.is_authenticated %}
           <span> {{ad.user.phone_number}} </span>
+          {% else %}
+          <span>برای مشاهده اطلاعات تماس باید وارد حساب خود شوید</span>
+          {% endif %}
           
         </div>
       </div>
