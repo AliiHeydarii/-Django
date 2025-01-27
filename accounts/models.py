@@ -39,9 +39,8 @@ class CustomUser(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username' , 'phone_number']
+    REQUIRED_FIELDS = [ 'username','phone_number']
     objects = CustomUserManager()
-    
     
     def has_perm(self, perm, obj=None):
         return self.is_superuser
@@ -50,8 +49,7 @@ class CustomUser(AbstractBaseUser):
         return self.is_superuser
     
     def __str__(self):
-        return self.username
-    
+        return str(self.email)
     
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
@@ -60,4 +58,4 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to='avatar', blank=True , null=True)
     
     def __str__(self):
-        return self.user
+        return str(self.user)

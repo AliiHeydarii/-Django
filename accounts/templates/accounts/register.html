@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+ثبت نام
+{% endblock %}
+
+{% block content %}
+
+<div class="container" style="width: 30%; margin-top: 30px;" >
+    <h3> ثبت نام  </h3>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.email}} <br>
+    {{form.username}} <br>
+    {{form.phone_number}} <br>
+    {{form.password1}} <br>
+    {{form.password2}} <br>
+
+    {{form.errors}}
+
+    <input type="submit" value="ثبت نام" class="btn btn-primary btn-lg">
+</form>
+</div>
+{% endblock %}
