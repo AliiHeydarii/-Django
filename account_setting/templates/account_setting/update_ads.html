@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} ویرایش آگهی {% endblock %}
+{% block content %}
+<br><br>
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+      </div>
+        
+    {% endfor %}
+    {% endif %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.title}} <br>
+    {{form.description}} <br>
+    {{form.price}}<br>
+    {{form.category}}<br>
+    {{form.city}}<br>
+    {{form.image}}<br>
+    <input type="submit" value="ذخیره" class="btn btn-primary btn-lg">
+</form>
+</div>
+{% endblock %}
