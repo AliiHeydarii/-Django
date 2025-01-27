@@ -16,7 +16,7 @@ class RegisterUserView(View):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect(reverse('accounts:login'))
         else:
             return render(request,'accounts/register.html',{'form' : form})
         

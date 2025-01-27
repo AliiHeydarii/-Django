@@ -48,6 +48,6 @@ class ProfileForm(forms.ModelForm):
         fields = ['first_name' , 'last_name' , 'avatar']
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام '}),
-            'last_name': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'نام خانوادگی'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام خانوادگی'}),
             'avatar': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }
