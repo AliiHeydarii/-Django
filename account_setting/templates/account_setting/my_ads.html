@@ -2,20 +2,26 @@
 
 {% block content %}
 
-<div class="container" style="margin-top: 50px;">   
+<div class="container" style="margin-top: 50px;">
   <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if not my_ads %}
+
+      <h3 style="color: rgb(190, 190, 190) ;">  لیست آگهی های شما خالی می باشد </h3>
+
+    {% else %}
     {% for ad in my_ads %}
-   
+
     <div class="col">
       <div class="card h-100">
-         <a href="{% url 'ad-detail' ad.id %}" style="text-decoration: none;">
-        <img src="{{ad.image.url}}" class="card-img-top" alt="...">
-      </a>
+        <a href="{% url 'ad-detail' ad.id %}" style="text-decoration: none;">
+          <img src="{{ad.image.url}}" class="card-img-top" alt="...">
+        </a>
         <div class="card-body">
           <h5 class="card-title"> {{ad.title}} </h5>
           <p class="card-text"> {{ad.description|truncatechars:200}} </p>
           <p class="card-text"> {{ad.price}} تومان </p>
           <a href="{% url 'account_setting:update-ads' ad.id %}" class="btn btn-secondary btn-lg"> ویرایش آگهی </a>
+          <a href="{% url 'account_setting:delete-ads' ad.id %}" class="btn btn-danger btn-lg"> حذف آگهی </a>
         </div>
         <div class="card-footer">
           <small class="text-muted">in {{ad.created|timesince}} ago</small>
@@ -25,6 +31,7 @@
     </div>
 
     {% endfor %}
+    {% endif %}
   </div>
-  </div>
+</div>
 {% endblock %}

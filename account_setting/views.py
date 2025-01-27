@@ -53,4 +53,8 @@ class UpdateAds(LoginRequiredMixin,View):
             form.save()
             return redirect(reverse('account_setting:my-ads'))
         
-        
+class DeleteAds(LoginRequiredMixin,View):
+    def get(self,request,pk):
+        ad = get_object_or_404(Advertisement,pk=pk)
+        ad.delete()
+        return redirect(reverse('account_setting:my-ads'))

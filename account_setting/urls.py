@@ -7,5 +7,6 @@ urlpatterns = [
     path('' , views.AccountSettingView.as_view() , name='account-setting'),
     path('profile/' , views.UpdateProfileView.as_view() , name='profile'),
     path('my-ads/' , views.MyAdsView.as_view() , name='my-ads'),
-    path('update-ads/<int:pk>' , views.UpdateAds.as_view() , name='update-ads')
+    path('update-ads/<int:pk>/' , views.UpdateAds.as_view() , name='update-ads'),
+    path('delete-ads/<int:pk>/' , views.DeleteAds.as_view() , name='delete-ads')
 ]
