@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
 from .models import CustomUser
 from django import forms
 from django.core.exceptions import ValidationError
@@ -35,3 +35,7 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ("email", 'username' , 'phone_number')
         
 
+
+class LoginUserForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class' : 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
