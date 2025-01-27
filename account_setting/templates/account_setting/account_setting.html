@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+تنظیمات حساب
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container" style="margin-top: 150px;">
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        {% if user.profile.avatar %}
+        <img src="{{user.profile.avatar.url}}" class="rounded-circle" style="width: 150px;" alt="Avatar" />
+        {% else %}
+
+        <img src="/media/avatar_defualt.jpg" class="rounded-circle" style="width: 150px;" alt="Avatar" />
+
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          
+          <p class="card-text">Email : {{user.email}}.</p>
+          <p class="card-text">Username : {{user.username}}.</p>
+          <p class="card-text">first_name : {{user.profile.first_name}}</p>
+          <p class="card-text">last_name : {{user.profile.last_name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <ul class="list-group" style="text-align:center;">
+    <li class="list-group-item "> <a href="{% url 'account_setting:profile' %}" style="text-decoration: none;"> تنظیمات
+        پروفایل </a></li>
+    <li class="list-group-item"> <a href="" style="text-decoration: none;"> آگهی های من </a> </li>
+    <li class="list-group-item"> <a href="" style="text-decoration: none;"> علاقه مندی ها </a> </li>
+    <li class="list-group-item"> <a href="{% url 'accounts:logout' %}" style="text-decoration: none;"> خروج از حساب </a>
+    </li>
+
+  </ul>
+</div>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
-from .models import CustomUser
+from .models import CustomUser , Profile
 from django import forms
 from django.core.exceptions import ValidationError
 
@@ -39,3 +39,15 @@ class CustomUserChangeForm(UserChangeForm):
 class LoginUserForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class' : 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
+
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['first_name' , 'last_name' , 'avatar']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'نام '}),
+            'last_name': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'نام خانوادگی'}),
+            'avatar': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }

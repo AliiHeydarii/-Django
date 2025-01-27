@@ -39,3 +39,4 @@ class AdCreateFormView(LoginRequiredMixin,View):
         else:
             context = {'form' : form}
             return render(request,'advertisement/ad_create.html',context)
+        

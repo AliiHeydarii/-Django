@@ -3,6 +3,7 @@ from django.views import View
 from .forms import CustomUserCreationForm , LoginUserForm
 from django.contrib.auth import login , authenticate,logout
 from django.contrib import messages
+from django.urls import reverse
 # Create your views here.
 
 class RegisterUserView(View):
@@ -45,4 +46,4 @@ class LoginUserView(View):
 class LogoutUserView(View):
     def get(self,request):
         logout(self.request)
-        return redirect('login')
+        return redirect(reverse('accounts:login'))
