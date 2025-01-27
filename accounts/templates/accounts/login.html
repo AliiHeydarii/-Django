@@ -16,6 +16,7 @@
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="ورود" class="btn btn-primary btn-lg">
+    <a href="{% url 'register' %}"> حساب کاربری ندارید ؟  </a>
 </form>
 </div>
 {% endblock %}

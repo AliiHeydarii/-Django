@@ -4,6 +4,7 @@ from .models import Advertisement
 from django.views import View
 from .forms import AdvertisementForm
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 class IndexView(View):
@@ -20,7 +21,7 @@ class AdDetailView(View):
         return render(request,'advertisement/ad_detail.html' , context)
 
 
-class AdCreateFormView(View):
+class AdCreateFormView(LoginRequiredMixin,View):
     def get(self,request):
         form = AdvertisementForm()
         context = {'form' : form}

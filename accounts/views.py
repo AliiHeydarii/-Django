@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.views import View
 from .forms import CustomUserCreationForm , LoginUserForm
-from django.contrib.auth import login , authenticate
+from django.contrib.auth import login , authenticate,logout
 from django.contrib import messages
 # Create your views here.
 
@@ -40,3 +40,9 @@ class LoginUserView(View):
                 return render(request , 'accounts/login.html' , {'form' : form})
         else:
             return render(request , 'accounts/login.html' , {'form' : form})
+        
+        
+class LogoutUserView(View):
+    def get(self,request):
+        logout(self.request)
+        return redirect('login')
