@@ -9,7 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class IndexView(View):
     def get(self,request):
-        ad_list = Advertisement.objects.all()
+        search = request.GET.get('search')
+        if search:
+            ad_list = Advertisement.objects.filter(title__contains=search)
+        else:
+            ad_list = Advertisement.objects.all()
         context = {'ad_list':ad_list}
         return render(request,'advertisement/index.html',context)
     

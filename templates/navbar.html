@@ -29,8 +29,8 @@
             <a class="btn btn-outline-success " href="{% url 'ad-create' %}" tabindex="-1" aria-disabled="true">ثبت آگهی </a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" action="{% url 'index' %}" method="get">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
