@@ -19,6 +19,9 @@
           <h5> قیمت </h5>
           <p class="card-text"> {{ad.price}} </p>
           <hr>
+          <h5> دسته بندی </h5>
+          <p class="card-text"><a href="{% url 'ad-category' ad.category.name %}" style="text-decoration: none;"> {{ad.category}}</a> </p>
+          <hr>
           <h5>ایجاد شده توسط</h5>
           <span> {{ad.user.username}} </span>
           <p class="card-text"><small class="text-muted"> {{ad.created|timesince}} </small></p>
